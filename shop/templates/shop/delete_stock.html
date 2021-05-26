@@ -1,0 +1,35 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>hello</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/css/style.css' %}" />
+</head>
+<body>
+    <h1>商品削除ページ</h1>
+    <p><a href="{% url 'index' %}">キャンセル</a></p>
+    
+    <hr>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Shop</th>
+            <th>Item</th>
+            <th>Num</th>
+        </tr>
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.shop}}</td>
+            <td>{{item.item}}</td>
+            <td>{{item.num}}</td>
+        </tr>
+    </table>
+    
+    <form action="{% url 'delete_stock' item.id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="削除">
+    </form>
+    
+</body>
+</html>

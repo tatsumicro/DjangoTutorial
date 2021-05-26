@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>hello</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/css/style.css' %}" />
+    
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" />
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#example').DataTable( {
+                "ajax": "{% static 'shop/data/arrays.txt' %}"
+            } );
+        } );
+    </script>
+
+    <h1>トップページ</h1>
+    <hr>
+    <p><a href="{% url 'list_item' %}">商品一覧</a></p>
+    <p><a href="{% url 'list_shop' %}">店一覧</a></p>
+    <p><a href="{% url 'list_stock' %}">在庫一覧</a></p>
+    <hr>
+</body>
+</html>

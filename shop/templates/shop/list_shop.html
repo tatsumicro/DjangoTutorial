@@ -1,0 +1,36 @@
+{% load static %}
+<!doctype html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <title>hello</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'shop/css/style.css' %}" />
+</head>
+<body>
+    <h1>店一覧ページ</h1>
+    <p><a href="{% url 'index' %}">ホームへ戻る</a></p>
+    
+    <hr>
+    <p><a href="{% url 'create_shop' %}">新規作成</a></p>
+    
+    <hr>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Shop Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    {% for item in shopdata %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <th><a href="{% url 'edit_shop' item.id %}">編集</a></th>
+            <th><a href="{% url 'delete_shop' item.id %}">削除</a></th>
+        </tr>
+    {% endfor %}
+    </table>
+    
+    
+</body>
+</html>
